@@ -1,0 +1,17 @@
+{
+  "vector_space": "dense cosine similarity",
+  "candidate_count": 1297,
+  "job_count": 2036,
+  "embedding_dimensions": 384,
+  "main_embedding_dims": 256,
+  "title_embedding_dims": 128,
+  "main_weight": 1.0,
+  "title_weight": 1.5,
+  "ranking_weights": [
+    0.6600000262260437,
+    2.990000009536743,
+    1.5299999713897705,
+    0.27000001072883606,
+    0.14000000059604645
+  ]
+}
