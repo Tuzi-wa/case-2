@@ -1,19 +1,4 @@
-"""在 holdout 上评测匹配排序器。
 
-相对旧版的三处修正：
-
-1. 旧版把权重调参和评测放在同一批候选人上（`tune_rank_weights` 用全量
-   matches 选最优权重，然后又在其中的 top-1 上报成绩），属于数据泄漏。
-   现在先按候选人切成 tune / eval 两份，权重只在 tune 份上选。
-
-2. 旧版只认 match_score 最高的那一个职位。候选人平均有 3.5 个标注匹配，
-   这个口径过严，所以同时报「严格」和「宽松（命中任一标注）」两套。
-
-3. 1,804 个职位里找 1 个，绝对值天然很低，单看没有意义。
-   现在一并输出随机基线和提升倍数。
-
-可选：--embeddings sentence 用真正的句向量模型替代 TF-IDF+SVD(LSA)。
-"""
 import argparse
 import os
 import random
@@ -37,7 +22,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def build_features(tc, tj, mode, model_name):
-    """返回 [特征矩阵]，每个形状为 (候选人数, 职位数)，取值已归一到 [0,1] 量级。"""
+    
     feats, names = [], []
 
     if mode in ("svd", "both"):

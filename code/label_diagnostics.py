@@ -1,11 +1,3 @@
-"""诊断：标注(match_score / Matches)和 CV-职位文本相似度到底有多大关系。
-
-结论（见 README 的 Evaluation 一节）：
-  - match_score 与文本相似度几乎不相关（Pearson -0.01, Spearman +0.05），
-    所以「预测 match_score 最高的那个职位」这个任务用文本基本做不了；
-  - 但标注职位确实比随机职位更相似（1.61x），中位数排在全部职位的前 16.5%，
-    说明文本相似度适合做粗筛，不适合做精排。
-"""
 import numpy as np
 from scipy.stats import spearmanr
 import matching_app as m
